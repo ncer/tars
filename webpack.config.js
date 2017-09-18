@@ -27,6 +27,10 @@ let plugins = [
         'process.env': {
             NODE_ENV: JSON.stringify(process.env.NODE_ENV)
         }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: "vendor",
+        minChunks: Infinity,
     })
 ];
 
@@ -115,7 +119,13 @@ function prepareEntryPoints(entryConfig) {
 module.exports = {
     // We have to add some pathes to entry point in case of using HMR
     entry: prepareEntryPoints({
-        main: path.resolve(`${cwd}/markup/${staticFolderName}/js/main.js`)
+        main: path.resolve(`${cwd}/markup/${staticFolderName}/js/main.js`),
+        vendor: [
+            'jquery',
+            'magnific-popup',
+            'owl.carousel',
+            'swiper/dist/js/swiper.min'
+        ]
     }),
 
     output: {

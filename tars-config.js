@@ -78,7 +78,11 @@ module.exports = {
              * Example: {$: "jquery"} or {React: 'react'}
              * @type {Object}
              */
-            providePlugin: {}
+            providePlugin: {
+                $: "jquery",
+                jQuery: "jquery",
+                "window.jQuery": "jquery"
+            }
         },
 
         /**
@@ -278,7 +282,7 @@ module.exports = {
          * 'img' by default
          * @type {String}
          */
-        imagesFolderName: 'img',
+        imagesFolderName: 'images',
 
         /**
          * Name of folder with modules
